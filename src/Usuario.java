@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Usuario {
+
     private String usuario;
     private String clave;
     public String metodoPago;
@@ -13,136 +14,180 @@ public class Usuario {
     }
 
     public void login() {
-        // Crear el marco principal
         JFrame frame = new JFrame("Login");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 350);
-        frame.setLocationRelativeTo(null); // Centra la ventana en la pantalla
+        frame.setSize(500, 400); // Tamaño aumentado
+        frame.setLocationRelativeTo(null);
 
-        // Crear el panel y añadirlo al marco
         JPanel panel = new JPanel();
         panel.setLayout(new CardLayout());
         frame.add(panel);
 
-        // Crear paneles para login y registro
-        JPanel loginPanel = new JPanel();
-        loginPanel.setLayout(null);
-        JPanel registerPanel = new JPanel();
-        registerPanel.setLayout(null);
+        JPanel loginPanel = createLoginPanel(frame);
+        JPanel registerPanel = createRegisterPanel();
 
-        // Añadir componentes al panel de login
-        placeLoginComponents(loginPanel);
-
-        // Añadir componentes al panel de registro
-        placeRegisterComponents(registerPanel);
-
-        // Añadir paneles al panel principal
         panel.add(loginPanel, "Login");
         panel.add(registerPanel, "Register");
 
-        // Mostrar el panel de login por defecto
         CardLayout cl = (CardLayout) (panel.getLayout());
         cl.show(panel, "Login");
 
-        // Hacer visible el marco
         frame.setVisible(true);
     }
 
-    private void placeLoginComponents(JPanel panel) {
-        // Cargar la imagen
-        ImageIcon imageIcon = new ImageIcon("src/ImagenLogo/logo.jpeg"); // Ajusta esta ruta a tu imagen
+    private JPanel createLoginPanel(JFrame frame) {
+        JPanel loginPanel = new JPanel();
+        loginPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.anchor = GridBagConstraints.CENTER; // Alinea los componentes al centro
+
+        // Imagen
+        ImageIcon imageIcon = new ImageIcon("src/ImagenLogo/logo.jpeg");
         JLabel imageLabel = new JLabel(imageIcon);
-        imageLabel.setBounds(150, 10, 100, 100); // Ajusta las coordenadas y el tamaño según sea necesario
-        panel.add(imageLabel);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        loginPanel.add(imageLabel, gbc);
 
-        // Crear etiqueta de usuario
+        // Usuario
         JLabel userLabel = new JLabel("Usuario:");
-        userLabel.setBounds(10, 120, 80, 25);
-        panel.add(userLabel);
+        userLabel.setFont(IAStyle.FONT); // Aplicar fuente personalizada
+        userLabel.setForeground(IAStyle.COLOR_FONT); // Aplicar color de texto
+        gbc.gridwidth = 1;
+        gbc.gridy = 1;
+        gbc.fill = GridBagConstraints.NONE; // Sin relleno
+        loginPanel.add(userLabel, gbc);
 
-        // Crear campo de texto para el usuario
-        JTextField userText = new JTextField(20);
-        userText.setBounds(100, 120, 165, 25);
-        panel.add(userText);
+        JTextField userText = new JTextField(25); // Aumenta el tamaño del campo
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL; // Rellenar horizontalmente
+        loginPanel.add(userText, gbc);
 
-        // Crear etiqueta de contraseña
+        // Contraseña
         JLabel passwordLabel = new JLabel("Contraseña:");
-        passwordLabel.setBounds(10, 150, 80, 25);
-        panel.add(passwordLabel);
+        passwordLabel.setFont(IAStyle.FONT);
+        passwordLabel.setForeground(IAStyle.COLOR_FONT);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        loginPanel.add(passwordLabel, gbc);
 
-        // Crear campo de texto para la contraseña
-        JPasswordField passwordText = new JPasswordField(20);
-        passwordText.setBounds(100, 150, 165, 25);
-        panel.add(passwordText);
+        JPasswordField passwordText = new JPasswordField(25); // Aumenta el tamaño del campo
+        gbc.gridx = 1;
+        loginPanel.add(passwordText, gbc);
 
-        // Crear botón de inicio de sesión
+        // Botones
         JButton loginButton = new JButton("Entrar");
-        loginButton.setBounds(10, 180, 80, 25);
-        panel.add(loginButton);
+        loginButton.setFont(IAStyle.FONT_BOLD);
+        loginButton.setCursor(IAStyle.CURSOR_HAND);
+        loginButton.setBackground(IAStyle.COLOR_FONT_LIGHT); // Color de fondo
+        loginButton.setForeground(Color.WHITE); // Color del texto
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.gridwidth = 1;
+        loginPanel.add(loginButton, gbc);
 
-        // Crear botón de registro
         JButton registerButton = new JButton("Registrarse");
-        registerButton.setBounds(100, 180, 130, 25);
-        panel.add(registerButton);
+        registerButton.setFont(IAStyle.FONT_BOLD);
+        registerButton.setCursor(IAStyle.CURSOR_HAND);
+        registerButton.setBackground(IAStyle.COLOR_FONT_LIGHT);
+        registerButton.setForeground(Color.WHITE);
+        gbc.gridx = 1;
+        loginPanel.add(registerButton, gbc);
 
-        // Añadir acción al botón de inicio de sesión
+        // Acción del botón de login
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String user = userText.getText();
                 String password = new String(passwordText.getPassword());
-                // Validar usuario y contraseña
                 if (user.equals("admin") && password.equals("12345")) {
-                    JOptionPane.showMessageDialog(panel, "Login exitoso");
+                    frame.setVisible(false); // Oculta la ventana de login
+                    showMainFrame(); // Muestra la ventana principal
                 } else {
-                    JOptionPane.showMessageDialog(panel, "Usuario o contraseña incorrectos");
+                    IAStyle.showMsgError("Usuario o contraseña incorrectos");
                 }
             }
         });
 
-        // Añadir acción al botón de registro
+        // Acción del botón de registro
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CardLayout cl = (CardLayout) (panel.getParent().getLayout());
-                cl.show(panel.getParent(), "Register");
+                // Obtener el CardLayout del panel principal
+                JPanel parentPanel = (JPanel) loginPanel.getParent();
+                CardLayout cl = (CardLayout) (parentPanel.getLayout());
+                cl.show(parentPanel, "Register");
             }
         });
+
+        return loginPanel;
     }
 
-    private void placeRegisterComponents(JPanel panel) {
-        // Crear etiquetas y campos para registro
+    private JPanel createRegisterPanel() {
+        JPanel registerPanel = new JPanel();
+        registerPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.anchor = GridBagConstraints.WEST;
+
+        // Usuario
         JLabel userLabel = new JLabel("Usuario:");
-        userLabel.setBounds(10, 20, 80, 25);
-        panel.add(userLabel);
+        userLabel.setFont(IAStyle.FONT);
+        userLabel.setForeground(IAStyle.COLOR_FONT);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.NONE;
+        registerPanel.add(userLabel, gbc);
 
-        JTextField userText = new JTextField(20);
-        userText.setBounds(100, 20, 165, 25);
-        panel.add(userText);
+        JTextField userText = new JTextField(25); // Aumenta el tamaño del campo
+        gbc.gridx = 1;
+        gbc.fill = GridBagConstraints.HORIZONTAL; // Rellenar horizontalmente
+        registerPanel.add(userText, gbc);
 
+        // Contraseña
         JLabel passwordLabel = new JLabel("Contraseña:");
-        passwordLabel.setBounds(10, 50, 80, 25);
-        panel.add(passwordLabel);
+        passwordLabel.setFont(IAStyle.FONT);
+        passwordLabel.setForeground(IAStyle.COLOR_FONT);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        registerPanel.add(passwordLabel, gbc);
 
-        JPasswordField passwordText = new JPasswordField(20);
-        passwordText.setBounds(100, 50, 165, 25);
-        panel.add(passwordText);
+        JPasswordField passwordText = new JPasswordField(25); // Aumenta el tamaño del campo
+        gbc.gridx = 1;
+        registerPanel.add(passwordText, gbc);
 
+        // Confirmar Contraseña
         JLabel confirmPasswordLabel = new JLabel("Confirmar Contraseña:");
-        confirmPasswordLabel.setBounds(10, 80, 150, 25);
-        panel.add(confirmPasswordLabel);
+        confirmPasswordLabel.setFont(IAStyle.FONT);
+        confirmPasswordLabel.setForeground(IAStyle.COLOR_FONT);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        registerPanel.add(confirmPasswordLabel, gbc);
 
-        JPasswordField confirmPasswordText = new JPasswordField(20);
-        confirmPasswordText.setBounds(160, 80, 165, 25);
-        panel.add(confirmPasswordText);
+        JPasswordField confirmPasswordText = new JPasswordField(25); // Aumenta el tamaño del campo
+        gbc.gridx = 1;
+        registerPanel.add(confirmPasswordText, gbc);
 
+        // Botones
         JButton registerButton = new JButton("Registrar");
-        registerButton.setBounds(10, 120, 120, 25);
-        panel.add(registerButton);
+        registerButton.setFont(IAStyle.FONT_BOLD);
+        registerButton.setCursor(IAStyle.CURSOR_HAND);
+        registerButton.setBackground(IAStyle.COLOR_FONT_LIGHT);
+        registerButton.setForeground(Color.WHITE);
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.gridwidth = 1;
+        registerPanel.add(registerButton, gbc);
 
         JButton backButton = new JButton("Volver");
-        backButton.setBounds(150, 120, 120, 25);
-        panel.add(backButton);
+        backButton.setFont(IAStyle.FONT_BOLD);
+        backButton.setCursor(IAStyle.CURSOR_HAND);
+        backButton.setBackground(IAStyle.COLOR_FONT_LIGHT);
+        backButton.setForeground(Color.WHITE);
+        gbc.gridx = 1;
+        registerPanel.add(backButton, gbc);
 
         // Acción del botón de registro
         registerButton.addActionListener(new ActionListener() {
@@ -152,10 +197,9 @@ public class Usuario {
                 String password = new String(passwordText.getPassword());
                 String confirmPassword = new String(confirmPasswordText.getPassword());
                 if (password.equals(confirmPassword)) {
-                    JOptionPane.showMessageDialog(panel, "Registro exitoso");
-                    // Puedes añadir lógica adicional para guardar el nuevo usuario aquí
+                    IAStyle.showMsg("Registro exitoso");
                 } else {
-                    JOptionPane.showMessageDialog(panel, "Las contraseñas no coinciden");
+                    IAStyle.showMsgError("Las contraseñas no coinciden");
                 }
             }
         });
@@ -164,45 +208,17 @@ public class Usuario {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CardLayout cl = (CardLayout) (panel.getParent().getLayout());
-                cl.show(panel.getParent(), "Login");
+                // Obtener el CardLayout del panel principal
+                JPanel parentPanel = (JPanel) registerPanel.getParent();
+                CardLayout cl = (CardLayout) (parentPanel.getLayout());
+                cl.show(parentPanel, "Login");
             }
         });
+
+        return registerPanel;
     }
 
-    public void logout() {
-        // Implementación del método logout
-    }
-
-    public void configuracionAjustes() {
-        // Implementación del método configuracionAjustes
-    }
-
-    public void recibirNotificacion() {
-        // Implementación del método recibirNotificacion
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getClave() {
-        return clave;
-    }
-
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
-
-    public String getMetodoPago() {
-        return metodoPago;
-    }
-
-    public void setMetodoPago(String metodoPago) {
-        this.metodoPago = metodoPago;
+    private void showMainFrame() {
+        SwingUtilities.invokeLater(MainFrame::new);
     }
 }
