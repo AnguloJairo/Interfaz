@@ -59,7 +59,7 @@ public abstract class SplashScreenForm {
 
     // Define the desired width and height for the splash screen
     private static final int SPLASH_WIDTH = 600; // Adjust the width as needed
-    private static final int SPLASH_HEIGHT = 400; // Adjust the height as needed
+    private static final int SPLASH_HEIGHT = 500; // Adjust the height as needed
 
     public static void show(){
         if (IAStyle.URL_SPLASH == null) {

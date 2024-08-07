@@ -38,6 +38,11 @@ public class App {
         //Sistema sistema = new Sistema();
         //sistema.mostrarMenu();
 
+        //MenuPanel
+        MenuPanel frame = new MenuPanel();
+        
+        frame.setVisible(true);
+
     }
 }
 
