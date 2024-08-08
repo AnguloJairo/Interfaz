@@ -1,5 +1,7 @@
 import javax.swing.JButton;
 
+import UserInterface.IAStyle;
+
 public class PatButton extends JButton {
     public PatButton(String text) {
         super(text);

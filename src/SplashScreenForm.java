@@ -51,6 +51,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 
+import UserInterface.IAStyle;
+
 public abstract class SplashScreenForm {
     private static JFrame frmSplash;
     private static JProgressBar prbLoading;

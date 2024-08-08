@@ -86,6 +86,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import UserInterface.IAStyle;
+
 public class MainFrame extends JFrame {
     private JPanel contentPanel;
     private CardLayout cardLayout;

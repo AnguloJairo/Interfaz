@@ -1,3 +1,4 @@
+package UserInterface;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -17,9 +18,9 @@ public static final Color COLOR_FONT_LIGHT = new Color(135, 206, 250); // Light 
 
     public static final Color COLOR_CURSOR = Color.black;
     public static final Color COLOR_BORDER = Color.lightGray;
-    public static final Font  FONT         = new Font("JetBrains Mono", Font.PLAIN, 14);
-    public static final Font  FONT_BOLD    = new Font("JetBrains Mono", Font.BOLD | Font.PLAIN, 14);
-    public static final Font  FONT_SMALL   = new Font("JetBrains Mono", Font.PLAIN| Font.PLAIN, 10);
+    public static final Font  FONT         = new Font("Bahnschrift", Font.PLAIN, 14);
+    public static final Font  FONT_BOLD    = new Font("Bahnschrift", Font.BOLD | Font.PLAIN, 14);
+    public static final Font  FONT_SMALL   = new Font("Bahnschrift", Font.PLAIN| Font.PLAIN, 10);
 
     public static final int ALIGNMENT_LEFT  = SwingConstants.LEFT;
     public static final int ALIGNMENT_RIGHT = SwingConstants.RIGHT;

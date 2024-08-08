@@ -8,6 +8,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import UserInterface.IAStyle;
+
 public class MenuPanel extends JPanel {
     public PatButton btnIniciarGrabacion = new PatButton("Iniciar Grabacion");
     public PatButton btnDetenerGrabacion = new PatButton("Detener Grabacion");
