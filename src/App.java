@@ -3,6 +3,9 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import com.formdev.flatlaf.FlatLightLaf;
 
+import UserInterface.Form.SplashScreenForm;
+import UserInterface.Form.LoginPanel;
+
 public class App {
     public static void main(String[] args) throws Exception {
         // Personalización
@@ -14,10 +17,10 @@ public class App {
         }
 
         //le oculte para ahorrar tiempo xd
-        //SplashScreenForm.show();
+        SplashScreenForm.show();
 
         // Iniciar la ventana de login
-        Usuario usuario = new Usuario();
+        LoginPanel usuario = new LoginPanel();
         SwingUtilities.invokeLater(() -> usuario.login());
     }
 }

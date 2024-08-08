@@ -1,3 +1,4 @@
+package UserInterface.CustomerControl;
 import javax.swing.JButton;
 
 import UserInterface.IAStyle;

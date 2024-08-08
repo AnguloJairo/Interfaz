@@ -1,9 +1,9 @@
-public class DetectorMovimiento {
-    private int sensibilidad;
-    private Area deteccionArea;
+// public class DetectorMovimiento {
+//     private int sensibilidad;
+//     private Area deteccionArea;
 
 
-    public boolean DetectorMovimiento(Frame frame) {
+//     public boolean DetectorMovimiento(Frame frame) {
         
-    }
-}
+//     }
+// }

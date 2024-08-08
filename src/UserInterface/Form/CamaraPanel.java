@@ -1,4 +1,7 @@
+package UserInterface.Form;
 
+import UserInterface.CustomerControl.PatButton;
+import UserInterface.IAStyle;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,13 +11,11 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import UserInterface.IAStyle;
-
-public class MenuPanel extends JPanel {
+public class CamaraPanel extends JPanel {
     public PatButton btnIniciarGrabacion = new PatButton("Iniciar Grabacion");
     public PatButton btnDetenerGrabacion = new PatButton("Detener Grabacion");
 
-    public MenuPanel() {
+    public CamaraPanel() {
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(300, 700));
         setBorder(IAStyle.createBorderRect());

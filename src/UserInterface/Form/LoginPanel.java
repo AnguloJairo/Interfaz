@@ -1,3 +1,4 @@
+package UserInterface.Form;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -5,7 +6,7 @@ import javax.swing.*;
 
 import UserInterface.IAStyle;
 
-public class Usuario {
+public class LoginPanel {
 
     private String usuario;
     private String clave;
@@ -45,7 +46,7 @@ public class Usuario {
         gbc.anchor = GridBagConstraints.CENTER; // Alinea los componentes al centro
 
         // Imagen
-        ImageIcon imageIcon = new ImageIcon("src/ImagenLogo/logo.jpeg");
+        ImageIcon imageIcon = new ImageIcon(IAStyle.URL_LOGO);
         JLabel imageLabel = new JLabel(imageIcon);
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -221,6 +222,6 @@ public class Usuario {
     }
 
     private void showMainFrame() {
-        SwingUtilities.invokeLater(MainFrame::new);
+        SwingUtilities.invokeLater(MenuPanel::new);
     }
 }
