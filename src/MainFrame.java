@@ -26,7 +26,7 @@ public class MainFrame extends JFrame {
         leftPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Espacio alrededor del panel
 
         // Crear etiquetas para el panel de navegación usando IAStyle
-        String[] buttonLabels = {"Home", "Cámaras", "Configuración", "Usuarios", "Registro"};
+        String[] buttonLabels = {"Home", "Cámaras", "Configuración", "Usuarios", "Ver Grbaciones"};
         for (String label : buttonLabels) {
             JLabel labelButton = new JLabel(label);
             labelButton.setFont(IAStyle.FONT); // Aplicar fuente personalizada
