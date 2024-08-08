@@ -15,7 +15,7 @@ public class App {
             e.printStackTrace();
         }
 
-        SplashScreenForm.show();
+        //SplashScreenForm.show();
 
         // Iniciar la ventana de login
         SwingUtilities.invokeLater(() -> {
