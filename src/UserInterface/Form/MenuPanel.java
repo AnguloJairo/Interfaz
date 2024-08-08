@@ -1,108 +1,135 @@
+
+// package UserInterface.Form;
+
+// import UserInterface.CustomerControl.PatButton;
+// import UserInterface.IAStyle;
+// import java.awt.Dimension;
+// import java.awt.Image;
+// import java.io.IOException;
+// import javax.imageio.ImageIO;
+// import javax.swing.Box;
+// import javax.swing.BoxLayout;
+// import javax.swing.ImageIcon;
+// import javax.swing.JLabel;
+// import javax.swing.JPanel;
+// import javax.swing.border.EmptyBorder;
+
+// public class MenuPanel extends JPanel {
+//     public PatButton   
+//             btnHome     = new PatButton("Home"),
+//             btnCamaras  = new PatButton("Cámaras"),
+//             btnConfiguracion = new PatButton("Configuración"),
+//             btnGrabaciones = new PatButton("Ver Grabaciones"),
+//             btnUsuarios = new PatButton("Usuarios");
+
+//     public MenuPanel() {
+//         customizeComponent();
+//     }
+
+//     private void customizeComponent() {
+//         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+//         setPreferredSize(new Dimension(350, getHeight()));
+
+//         // Add logo
+//         try {
+//             Image logo = ImageIO.read(IAStyle.URL_LOGO);
+//             logo = logo.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+//             add(new JLabel(new ImageIcon(logo)));
+//         } catch (IOException e) {
+//             e.printStackTrace();
+//         }
+
+//         // Customize and add buttons with vertical spacing
+//         addButton(btnHome);
+//         addButton(btnConfiguracion);
+//         addButton(btnCamaras);
+//         addButton(btnGrabaciones);
+//         addButton(btnUsuarios);
+
+//         // Add copyright
+//         JLabel copyright = new JLabel("\u00A9 2024 Jairo");
+//         copyright.setFont(IAStyle.FONT_SMALL); // Small font for copyright
+//         copyright.setForeground(IAStyle.COLOR_FONT); // Use color from IAStyle
+//         add(Box.createRigidArea(new Dimension(0, 10))); // Space before copyright
+//         add(copyright);
+//     }
+
+//     private void addButton(PatButton button) {
+//         button.setFont(IAStyle.FONT); // Apply the same font as in LoginPanel
+//         button.setForeground(IAStyle.COLOR_FONT); // Apply the same text color
+//         button.setBackground(IAStyle.COLOR_FONT_LIGHT); // Apply background color
+//         button.setBorder(new EmptyBorder(5, 20, 5, 20)); // Apply custom padding
+//         button.setCursor(IAStyle.CURSOR_HAND); // Change cursor to hand on hover
+        
+//         add(button);
+//         add(Box.createRigidArea(new Dimension(0, 10))); // Space between buttons
+//     }
+// }
 package UserInterface.Form;
 
-
+import UserInterface.CustomerControl.PatButton;
 import UserInterface.IAStyle;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.Dimension;
+import java.awt.Image;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
-public class MenuPanel extends JFrame {
-    private JPanel contentPanel;
-    private CardLayout cardLayout;
-    private CamaraPanel menuPanel;
+public class MenuPanel extends JPanel {
+    public PatButton   
+            btnHome     = new PatButton("Home"),
+            btnCamaras  = new PatButton("Cámaras"),
+            btnConfiguracion = new PatButton("Configuración"),
+            btnGrabaciones = new PatButton("Ver Grabaciones"),
+            btnUsuarios = new PatButton("Usuarios");
 
     public MenuPanel() {
         customizeComponent();
-        setupPanels();
     }
 
     private void customizeComponent() {
-        setTitle("Sistema de Seguridad con Cámaras IP");
-        setSize(1200, 800);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setLayout(new BorderLayout());
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setPreferredSize(new Dimension(200, getHeight())); // Adjusted width for the panel
 
-        // Panel de navegación a la izquierda
-        JPanel leftPanel = new JPanel();
-        leftPanel.setLayout(new BorderLayout());
-        leftPanel.setBackground(Color.LIGHT_GRAY);
-        leftPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Espacio alrededor del panel
-
-        // Panel para la imagen
-        JPanel imagePanel = new JPanel();
-        imagePanel.setBackground(Color.LIGHT_GRAY);
+        // Add logo
         try {
             Image logo = ImageIO.read(IAStyle.URL_LOGO);
-            logo = logo.getScaledInstance(150, 150, Image.SCALE_SMOOTH); // Ajusta el tamaño según sea necesario
-            JLabel logoLabel = new JLabel(new ImageIcon(logo));
-            logoLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Centrar la imagen
-            imagePanel.add(logoLabel);
+            logo = logo.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+            add(new JLabel(new ImageIcon(logo)));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        leftPanel.add(imagePanel, BorderLayout.NORTH);
 
-        // Panel para los botones
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
-        buttonPanel.setBackground(Color.LIGHT_GRAY);
+        // Customize and add buttons with vertical spacing
+        addButton(btnHome);
+        addButton(btnConfiguracion);
+        addButton(btnCamaras);
+        addButton(btnGrabaciones);
+        addButton(btnUsuarios);
 
-        // Crear etiquetas para el panel de navegación usando IAStyle
-        String[] buttonLabels = {"Home", "Cámaras", "Configuración", "Usuarios", "Ver Grabaciones"};
-        for (String label : buttonLabels) {
-            JLabel labelButton = new JLabel(label);
-            labelButton.setFont(IAStyle.FONT); // Aplicar fuente personalizada
-            labelButton.setForeground(IAStyle.COLOR_FONT); // Aplicar color de texto
-            labelButton.setCursor(IAStyle.CURSOR_HAND); // Aplicar cursor personalizado
-            labelButton.setAlignmentX(Component.LEFT_ALIGNMENT); // Alinear a la izquierda
-            labelButton.setHorizontalAlignment(SwingConstants.LEFT); // Alinear el texto a la izquierda
-            labelButton.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Espacio alrededor del texto
-            labelButton.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    // Navegación a las diferentes secciones
-                    cardLayout.show(contentPanel, label);
-                }
-            });
-            buttonPanel.add(labelButton);
-        }
-        leftPanel.add(buttonPanel, BorderLayout.CENTER);
-
-        add(leftPanel, BorderLayout.WEST);
+        // Add copyright
+        JLabel copyright = new JLabel("\u00A9 2024 Jairo");
+        copyright.setFont(IAStyle.FONT_SMALL); // Small font for copyright
+        copyright.setForeground(IAStyle.COLOR_FONT); // Use color from IAStyle
+        add(Box.createRigidArea(new Dimension(0, 10))); // Space before copyright
+        add(copyright);
     }
 
-    private void setupPanels() {
-        contentPanel = new JPanel();
-        cardLayout = new CardLayout();
-        contentPanel.setLayout(cardLayout);
+    private void addButton(PatButton button) {
+        button.setFont(IAStyle.FONT); // Apply the same font as in LoginPanel
+        button.setForeground(IAStyle.COLOR_FONT); // Apply the same text color
+        button.setBackground(IAStyle.COLOR_FONT_LIGHT); // Apply background color
+        button.setBorder(new EmptyBorder(5, 15, 5, 15)); // Apply custom padding to reduce width
+        button.setCursor(IAStyle.CURSOR_HAND); // Change cursor to hand on hover
+        
+        button.setPreferredSize(new Dimension(200, 40)); // Adjust button width and height
 
-        // Crear y añadir los paneles al CardLayout
-        JPanel homePanel = new JPanel();
-        homePanel.add(new JLabel("¡Bienvenido a Security Vision!"));
-        contentPanel.add(homePanel, "Home");
-
-        // Crear y añadir el panel de cámaras
-        menuPanel = new CamaraPanel();
-        contentPanel.add(menuPanel, "Cámaras");
-
-        // Crear otros paneles si es necesario
-        JPanel configuracionPanel = new JPanel();
-        configuracionPanel.add(new JLabel("Panel de Configuración"));
-        contentPanel.add(configuracionPanel, "Configuración");
-
-        JPanel usuariosPanel = new JPanel();
-        usuariosPanel.add(new JLabel("Panel de Usuarios"));
-        contentPanel.add(usuariosPanel, "Usuarios");
-
-        JPanel registroPanel = new JPanel();
-        registroPanel.add(new JLabel("Panel de Registro"));
-        contentPanel.add(registroPanel, "Registro");
-
-        add(contentPanel, BorderLayout.CENTER);
-        setVisible(true);
+        add(button);
+        add(Box.createRigidArea(new Dimension(0, 10))); // Space between buttons
     }
 }

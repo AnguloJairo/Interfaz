@@ -11,11 +11,7 @@ public class LoginPanel {
     private String usuario;
     private String clave;
     public String metodoPago;
-
-    public void realizarCompra() {
-        // Implementación del método realizarCompra
-    }
-
+    
     public void login() {
         JFrame frame = new JFrame("Login");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -222,6 +218,9 @@ public class LoginPanel {
     }
 
     private void showMainFrame() {
-        SwingUtilities.invokeLater(MenuPanel::new);
+        SwingUtilities.invokeLater(() -> {
+            new MainForm("Sistema de Seguridad con Cámaras IP");
+        });
     }
+    
 }
