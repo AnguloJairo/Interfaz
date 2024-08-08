@@ -11,8 +11,6 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 public abstract class IAStyle {
-    // public static final Color COLOR_FONT = new Color(0, 100, 50); //(218, 8, 40)
-    // public static final Color COLOR_FONT_LIGHT = new Color(0, 100, 100);
     public static final Color COLOR_FONT = new Color(70, 130, 180); // Steel Blue
 public static final Color COLOR_FONT_LIGHT = new Color(135, 206, 250); // Light Sky Blue
 
@@ -39,12 +37,12 @@ public static final Color COLOR_FONT_LIGHT = new Color(135, 206, 250); // Light 
     }
 
     public static final void showMsg(String msg){
-        JOptionPane.showMessageDialog(null, msg, "😏 IABot", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, msg, "😏 SecureVision", JOptionPane.INFORMATION_MESSAGE);
     }
     public static final void showMsgError(String msg){
-        JOptionPane.showMessageDialog(null, msg, "💀 IABot", JOptionPane.OK_OPTION);
+        JOptionPane.showMessageDialog(null, msg, "💀 SecureVision", JOptionPane.OK_OPTION);
     }
     public static final boolean showConfirmYesNo(String msg){
-        return (JOptionPane.showConfirmDialog(null, msg, "😞 IABot", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
+        return (JOptionPane.showConfirmDialog(null, msg, "😞 SecureVision", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
     }
 }

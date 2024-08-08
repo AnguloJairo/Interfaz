@@ -39,7 +39,7 @@ public class CamaraPanel extends JPanel {
     }
 
     private void customizeButton(JButton button) {
-        button.setForeground(new Color(100, 149, 237)); // Color más relajado (Cornflower Blue)
+        button.setForeground(new Color(100, 149, 237)); 
         button.setFont(IAStyle.FONT_BOLD);
         button.setCursor(IAStyle.CURSOR_HAND);
         button.setContentAreaFilled(false);

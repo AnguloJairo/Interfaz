@@ -14,9 +14,8 @@ public abstract class SplashScreenForm {
     private static ImageIcon iconImage;
     private static JLabel lblSplash;
 
-    // Define the desired width and height for the splash screen
-    private static final int SPLASH_WIDTH = 600; // Adjust the width as needed
-    private static final int SPLASH_HEIGHT = 500; // Adjust the height as needed
+    private static final int SPLASH_WIDTH = 600;
+    private static final int SPLASH_HEIGHT = 500; 
 
     public static void show(){
         if (IAStyle.URL_SPLASH == null) {
@@ -45,10 +44,8 @@ public abstract class SplashScreenForm {
         frmSplash.setSize(SPLASH_WIDTH, SPLASH_HEIGHT);
         frmSplash.setLocationRelativeTo(null);
 
-        // Display the frame
         frmSplash.setVisible(true);
 
-        // Simulate loading progress
         for (int i = 0; i <= 100; i++) {
             try {
                 Thread.sleep(50);
@@ -58,7 +55,6 @@ public abstract class SplashScreenForm {
             prbLoading.setValue(i);
         }
 
-        // Hide the frame
         frmSplash.setVisible(false);
     }
 }

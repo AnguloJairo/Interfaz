@@ -1,6 +1,5 @@
 package UserInterface.Form;
 
-import UserInterface.IAStyle;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import javax.swing.JFrame;
@@ -16,8 +15,8 @@ public class MainForm extends JFrame{
         pnlMenu.btnConfiguracion.addActionListener(     e -> setPanel(new MainPanel())); 
         pnlMenu.btnCamaras.addActionListener(      e -> setPanel(new CamaraPanel()));  
         pnlMenu.btnGrabaciones.addActionListener( e -> setPanel(new MainPanel())); 
-        //agregar
-        pnlMenu.btnUsuarios .addActionListener( e -> { IAStyle.showMsgError("mensaje de error");}); 
+
+        //pnlMenu.btnUsuarios .addActionListener( e -> { IAStyle.showMsgError("mensaje de error");}); 
     }
 
     private void setPanel(JPanel formularioPanel) {
