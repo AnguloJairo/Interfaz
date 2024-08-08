@@ -29,7 +29,7 @@ public static final Color COLOR_FONT_LIGHT = new Color(135, 206, 250); // Light 
     public static final Cursor CURSOR_DEFAULT = new Cursor(Cursor.DEFAULT_CURSOR);
 
     //public static final URL URL_MAIN  = IAStyle.class.getResource("ImagenLogo/Logo.jpeg");
-    public static final URL URL_LOGO  = IAStyle.class.getResource("/UserInterface/Resource/Img/Logo.png");
+    public static final URL URL_LOGO  = IAStyle.class.getResource("ImagenLogo/Logo.jpeg");
     public static final URL URL_SPLASH= IAStyle.class.getResource("ImagenLogo/Splash.png");
 
     public static final CompoundBorder createBorderRect(){

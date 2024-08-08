@@ -13,7 +13,8 @@ public class App {
             e.printStackTrace();
         }
 
-        SplashScreenForm.show();
+        //le oculte para ahorrar tiempo xd
+        //SplashScreenForm.show();
 
         // Iniciar la ventana de login
         Usuario usuario = new Usuario();
