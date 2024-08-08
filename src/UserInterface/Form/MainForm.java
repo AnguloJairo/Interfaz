@@ -15,6 +15,7 @@ public class MainForm extends JFrame{
         pnlMenu.btnConfiguracion.addActionListener(     e -> setPanel(new MainPanel())); 
         pnlMenu.btnCamaras.addActionListener(      e -> setPanel(new CamaraPanel()));  
         pnlMenu.btnGrabaciones.addActionListener( e -> setPanel(new MainPanel())); 
+        pnlMenu.btnUsuarios.addActionListener( e -> setPanel(new UsuarioPanel()));   //creado
 
         //pnlMenu.btnUsuarios .addActionListener( e -> { IAStyle.showMsgError("mensaje de error");}); 
     }
